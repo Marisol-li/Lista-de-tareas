@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lista de tareas</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="./js/vue3.js"></script>
+    <link rel="stylesheet" href="./css/estilos.css">
+</head>
+<body>
+    <div id="app">
+        <h1>Lista de Tareas</h1>
+        <input v-model="newTask" @keyup.enter="addTask" placeholder="Nueva tarea">
+        <button @click="addTask">Añadir</button>
+        <ul>
+            <li v-for="(task, index) in tasks" :key="index">
+                <input type="checkbox" v-model="task.completed">
+                <span :class="{ completed: task.completed }">{{ task.text }}</span>
+                <button @click="removeTask(index)">Eliminar</button>
+            </li>
+        </ul>
+        <p>Progreso: {{ progress }}%</p>
+        <div class="progress-container">
+            <div class="progress-bar" :style="{ width: progress + '%' }"></div>
+        </div>
+    </div>
+    <script src="./js/script.js"></script>
+</body>
+</html>
+
+
+
+
+
